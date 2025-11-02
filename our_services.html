@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>our_services</title>
-
+    <link rel="stylesheet" href="main.css">
     <style>
         body,html{
             height: 100%;
@@ -37,36 +37,7 @@
 
         }
 
-        /* main header css */
-        
-        .main_header{
-            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* font for header */
-           font-size: larger;           
-            padding: 10px ;
-            left: 0vw;
-            top: 0vw;
-            display: flex;
-            position: absolute;
-        }
-        .main_header ul{
-            list-style: none;
-            display: flex;
-        }
-        .main_header ul li{
-            padding: 10px 20px;
-        }
-        .pawsome_header{
-            position: relative;
-            top: -9px;
-            text-shadow: 2px 2px 4px rgba(0.1,0.1,0.1,0.1);
-            color: #8b61c2;        
-            font-family:'PP Neue Machina Ultrabold';
-            font-size: 4vh;
-            
-        }
-        .main_header a{
-            text-decoration: none;    
-        }
+       
 
 
         /* our services text css */
@@ -75,21 +46,29 @@
            display: grid;
            grid-template-columns: repeat(5, 1fr);
            grid-template-rows: repeat(5, 1fr);
-           gap: 8px;
+           
         } 
         
 
     
         .our_services_text {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
             text-align: center;
             text-shadow: 2px 2px 4px rgba(0.1,0.1,0.1,0.1);
             color: #8b61c2;        
             font-family:'PP Neue Machina Ultrabold';
-            font-size: 10vh;
+            font-size: 15vh;
             grid-column: span 5 / span 5;
 
         }
              .services{
+            margin: 0px 5px;
+            padding: 20px;
+                 border: 1px solid;
+                border-style: dotted;
+                border-radius: 80px;
                 display: flex;
                 flex-direction: column;
                align-items: center;
@@ -159,70 +138,7 @@
           }
         
           
-          /* popup img */
-          .overlay{
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-        
-          }
-          .loginbox.show{
-            bottom: 0;
-        
-          }
-          .loginbox{
-           
-           bottom: -500px;
-           width: 60vw;
-           height: 90vh;        
-           background-image: url(images/services/popup.png);
-           background-position: center;
-           background-repeat: no-repeat;
-           background-size:cover ;
-           position: fixed;
-           margin-top: 63px;
-           left: 50%;
-           transform: translateX(-50%);
-
-           transition: bottom 0.4s ease;
-          }
-          .loginbox .enter{
-             position: absolute;
-             bottom: 25%;
-             left: 10%;
-            padding: 15px 20px 15px 50px;
-            border-radius: 20px;
-            border-width: 0;
-        
-          }
-          .loginbtn{
-            padding: 11px 30px;
-            position: absolute;
-            bottom: 18%;
-            left: 17%;
-            border-radius: 20px;
-            border-style: none;
-            background-color: #ddc4a1;
-            cursor: pointer;
-          }
-          .crossbtn{
-            position: absolute;
-            bottom: 46%;
-            right: 3%;
-            cursor: pointer;
-          }
-          .login_btn_header{
-            background-color: #8b61c2;
-            color: whitesmoke;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-          }
+          
 
 
     </style>
@@ -239,6 +155,7 @@
                 <li>health&#11167</li>
                 <li>food&#11167</li>
                 <li><button class="login_btn_header">login</button></li>
+                <div class="cart-icon">🛒<span class="cart-count">0</span></div>
             </ul>
         </header>
         
@@ -246,23 +163,23 @@
                 <div class="our_services_text">our_services</div>
                 <div class="services box1 div2">
                    <img src="images/services/pet_sitting.png" class="pet_sitting_img services_img ">
-                   <button class="services_button pet_sitting_button">Pet sitting</button>         
+                   <button class="services_button pet_sitting_button" >Pet sitting</button>         
                </div>
                 <div class="services box2 div3">
                    <img src="images/services/pet_grooming.png" class="pet_grooming_img services_img ">
-                   <button class="services_button pet_sitting_button">Pet grooming</button>         
+                   <button class="services_button pet_grooming_button">Pet grooming</button>         
                 </div>
                 <div class="services box3 div4">
                    <img src="images/services/pet_accessories.png" class="pet_accessories_img services_img ">
-                   <button class="services_button pet_sitting_button">Pet accessories</button>         
+                   <button class="services_button pet_accessories_button">Pet accessories</button>         
                 </div>
                 <div class="services box4 div5">
                    <img src="images/services/pet_health.png" class="pet_health_img services_img ">
-                   <button class="services_button pet_sitting_button">Pet health</button>         
+                   <button class="services_button pet_health_button">Pet health</button>         
                 </div>
                 <div class="services box5 div6">
                    <img src="images/services/pet_food.png" class="pet_food_img services_img ">
-                   <button class="services_button pet_sitting_button">Pet food</button>         
+                   <button class="services_button pet_food_button">Pet food</button>         
                 </div>
            </div>
         <div class="overlay" id="overlay">
@@ -275,7 +192,15 @@
             </div>
         </div>
     </div>
+      <script>
+        
+      const petsitting=document.querySelector(".pet_grooming_button")
+        petsitting.addEventListener("click",()=>{
+            window.location.href="petgrooming.html";
+        });
 
-    <script src="script.js"></script>
+      </script>
+    <script src="header.js"></script>
+   
     
 </html>
